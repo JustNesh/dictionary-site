@@ -4,15 +4,17 @@ import "./App.css"
 import SearchBar from "./SearchBar.js"
 import Card from "./Components/Card.js";
 import capitalizeFirstLetter from "./Functionality/capitalizeFirstLetter.js";
+import determineAudio from "./Functionality/determineAudio.js";
+
+
 export default function App() {
     const [searchinput, setSearchinput] = useState("");
-    const [word, setWord] = useState("Fish")  
-    const [wordinfo, setWordinfo] = useState([])
-    const [counter, setCounter] = useState(0)
+    const [word, setWord] = useState("Fish");
+    const [wordinfo, setWordinfo] = useState([]);
+    const [counter, setCounter] = useState(0);
     const inputref = useRef(word);
     const [loading, setLoading] = useState(true);
     const [okResponse, setOkResponse] =useState(null);
-
 
     // function ProcessWordInfo({arrayobject}) {
     //     arrayobject.map((item) => {
@@ -49,7 +51,7 @@ export default function App() {
 
 
     const searchWord = async(event) => {
-        setWord(searchinput);
+        setWord(capitalizeFirstLetter(searchinput.toLowerCase()));
         setCounter((counter)=>counter+1)
         if (word) {
            await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${inputref.current.value}`)
@@ -77,31 +79,16 @@ export default function App() {
     function WordOrEntry({wordinfo}) {
         // console.log(counter)
         if (okResponse===true && counter>=1 && loading===false) {
-            // return (<Card wordinfo={wordinfo} word={word}></Card>)
+            // setWord(capitalizeFirstLetter(wordinfo[0].word))
+            let phonetic = wordinfo[0].phonetic
+            let phonetics = wordinfo[0].phonetics
+            let meanings = wordinfo[0].meanings
+            let sourceURLs = wordinfo[0].sourceURLs
+            // let audio = determineAudio(phonetics)
+            let audio = determineAudio(phonetics)
             return (
                 <div>
-                {/* {wordinfo.map((item) => {
-                    // One Key Pair
-                    setWord(item.word)
-        
-                    // One Key Pair
-                    let phonetic = item.phonetic
-        
-                    // Multiple Key Pairs (Array of Objects containing values
-                    // such as Text, Audio, sourceURL, & License. Ignore License.)
-                    let phonetics = item.phonetics
-        
-                    // Mutliple Key Pairs. Contains array of objects with key pairs such as
-                    // partOFSpeech, Definitions. Definitions has it's own array of objects with
-                    // values such as definition, synonyms, and antonyms. These values can be undefined.
-                    let meanings = item.meanings
-                    return (
-                        <h2>{capitalizeFirstLetter(item.word)}</h2>
-                    )
-                })}
-                    <h2>{capitalizeFirstLetter(word)}</h2> */}
-                    <h2>{capitalizeFirstLetter(wordinfo[0].word)}</h2>
-                    <h3>{wordinfo[0].phonetics[0].text}</h3>
+                    <Card word={word} phonetic={phonetic} audio={audio} meanings={meanings} sourceURLs={sourceURLs} />
                 </div>             
             )
         } else if (counter>=1 && loading===true) {
