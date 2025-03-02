@@ -1,13 +1,19 @@
 import React from "react";
 
-export default function Card({wordInfo,word}) {
-    if (word){
-        return (
-            <p>{wordInfo}</p>
-        )
-    } else {
-        return <h2>Please search a word... :D</h2>
-    }
-        
+//word={word} phonetic={phonetic} phonetics={phonetics} meanings={meanings} sourceURLs={sourceURLs}
 
+export default function Card({word,phonetic,audio,meanings,sourceURLs}) {    
+    return (
+            <div>
+                <div>
+                    <h2>{word}</h2>
+                    {audio&& (
+                        <audio controls>
+                        <source src={audio} type="audio/mpeg"/>
+                        </audio>
+                    )}
+                </div>
+                <h3>{phonetic}</h3>
+            </div>
+        )
 }
