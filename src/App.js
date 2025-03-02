@@ -13,6 +13,7 @@ export default function App() {
     // const [phoenetic,setPhoenetic] = useState("feesh");
     // const [phonetics,setPhoenetics] = useState([]);
     // const [meanings, setMeanings] = useState([]);
+    const adding = 2+2
     const [loading, setLoading] = useState(true);
 
 
