@@ -8,36 +8,38 @@ export default function App() {
     const [searchinput, setSearchinput] = useState("");
     const [word, setWord] = useState("Fish")  
     const [wordinfo, setWordinfo] = useState([])
-    // const [content, setContent] = useState([wordinfo])
     const [counter, setCounter] = useState(0)
     const inputref = useRef(word);
-    // const [phoenetic,setPhoenetic] = useState("feesh");
-    // const [phonetics,setPhoenetics] = useState([]);
-    // const [meanings, setMeanings] = useState([]);
     const [loading, setLoading] = useState(true);
     const [okResponse, setOkResponse] =useState(null);
 
 
-    function ProcessWordInfo({arrayobject}) {
-        arrayobject.map((item) => {
-            // One Key Pair
-            let word = item.word
+    // function ProcessWordInfo({arrayobject}) {
+    //     arrayobject.map((item) => {
+    //         // One Key Pair
+    //         let word = item.word
 
-            // One Key Pair
-            let phonetic = item.phonetic
+    //         // One Key Pair
+    //         let phonetic = item.phonetic
 
-            // Multiple Key Pairs (Array of Objects containing values
-            // such as Text, Audio, sourceURL, & License. Ignore License.)
-            let phonetics = item.phonetics
+    //         // Multiple Key Pairs (Array of Objects containing values
+    //         // such as Text, Audio, sourceURL, & License. Ignore License.)
+    //         let phonetics = item.phonetics
 
-            // Mutliple Key Pairs. Contains array of objects with key pairs such as
-            // partOFSpeech, Definitions. Definitions has it's own array of objects with
-            // values such as definition, synonyms, and antonyms. These values can be undefined.
-            let meanings = item.meanings
-            return (
-                <h2>{item.word}</h2>
-            )
-        })
+    //         // Mutliple Key Pairs. Contains array of objects with key pairs such as
+    //         // partOFSpeech, Definitions. Definitions has it's own array of objects with
+    //         // values such as definition, synonyms, and antonyms. These values can be undefined.
+    //         let meanings = item.meanings
+    //         return (
+    //             <h2>{item.word + "!!!"}</h2>
+    //         )
+    //     })
+    // }
+
+    const enterKeyPressed = (event) =>  {
+        if (event.key === 'Enter') {
+            handleClick()
+        }
     }
 
 
@@ -50,15 +52,15 @@ export default function App() {
         setWord(searchinput);
         setCounter((counter)=>counter+1)
         if (word) {
-            fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${inputref.current.value}`)
-            .then(response => {
+           await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${inputref.current.value}`)
+            .then( response => {
               if (!response.ok){
                 setOkResponse(false)
                 setWordinfo([])
                 throw new Error(`HTTP ERROR! Status Code: ${response.status}`)
               }
             setOkResponse(true)
-            return response.json()
+            return (response.json())
           })
           .then(content => {setWordinfo(content);console.log(content)}).catch(error => {console.error(`Fetch Error: ${error}`);setOkResponse(false)} )
           console.log(inputref.current.value)
@@ -74,14 +76,13 @@ export default function App() {
 
     function WordOrEntry({wordinfo}) {
         // console.log(counter)
-        let mainWord
         if (okResponse===true && counter>=1 && loading===false) {
             // return (<Card wordinfo={wordinfo} word={word}></Card>)
             return (
                 <div>
-                {wordinfo.map((item) => {
+                {/* {wordinfo.map((item) => {
                     // One Key Pair
-                    let word = item.word
+                    setWord(item.word)
         
                     // One Key Pair
                     let phonetic = item.phonetic
@@ -95,9 +96,12 @@ export default function App() {
                     // values such as definition, synonyms, and antonyms. These values can be undefined.
                     let meanings = item.meanings
                     return (
-                        <h2>{item.word}</h2>
+                        <h2>{capitalizeFirstLetter(item.word)}</h2>
                     )
                 })}
+                    <h2>{capitalizeFirstLetter(word)}</h2> */}
+                    <h2>{capitalizeFirstLetter(wordinfo[0].word)}</h2>
+                    <h3>{wordinfo[0].phonetics[0].text}</h3>
                 </div>             
             )
         } else if (counter>=1 && loading===true) {
@@ -110,7 +114,7 @@ export default function App() {
 
 
     return (
-        <div className="tc">
+        <div onKeyDown={enterKeyPressed} className="tc">
             <h1 className="tc">The Dictionary Site</h1>
             <SearchBar inputref={inputref} searchbarValue = {inputSearchBox} clickFunction={() => handleClick()}/>
             {/* <Card wordinfo={wordinfo} word={word}></Card> */}
