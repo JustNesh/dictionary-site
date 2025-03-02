@@ -13,7 +13,6 @@ export default function App() {
     // const [phoenetic,setPhoenetic] = useState("feesh");
     // const [phonetics,setPhoenetics] = useState([]);
     // const [meanings, setMeanings] = useState([]);
-    const adding = 2+2
     const [loading, setLoading] = useState(true);
 
 
@@ -34,7 +33,7 @@ export default function App() {
             // values such as definition, synonyms, and antonyms. These values can be undefined.
             let meanings = item.meanings
             return (
-                <h2>{item.phonetics}</h2>
+                <h2>{item.word}</h2>
             )
         })
     }
@@ -45,10 +44,7 @@ export default function App() {
     }
 
 
-    function searchWord (event){
-        if (loading){
-            
-        }
+    const searchWord = async(event) => {
         setWord(searchinput);
         setCounter((counter)=>counter+1)
         if (word) {
@@ -64,11 +60,42 @@ export default function App() {
           console.log(inputref.current.value)
         }
     }
-    function WordOrEntry() {
+
+    const handleClick = async() => {
+        setLoading(true);
+        await searchWord();
+        setLoading(false);
+    }
+
+
+    function WordOrEntry({wordinfo}) {
         // console.log(counter)
-        if (counter>=1) {
-            return (<Card wordinfo={wordinfo} word={word}></Card>)
-        } else {
+        if (counter>=1 && loading===false) {
+            // return (<Card wordinfo={wordinfo} word={word}></Card>)
+            return (
+                wordinfo.map((item) => {
+                // One Key Pair
+                let word = item.word
+    
+                // One Key Pair
+                let phonetic = item.phonetic
+    
+                // Multiple Key Pairs (Array of Objects containing values
+                // such as Text, Audio, sourceURL, & License. Ignore License.)
+                let phonetics = item.phonetics
+    
+                // Mutliple Key Pairs. Contains array of objects with key pairs such as
+                // partOFSpeech, Definitions. Definitions has it's own array of objects with
+                // values such as definition, synonyms, and antonyms. These values can be undefined.
+                let meanings = item.meanings
+                return (
+                    <h2>{item.word}</h2>
+                )
+            }))
+        } else if (counter>=1 && loading==true) {
+            return <h2>Loading...</h2>
+        }
+        else {
             return (<h2>Please input a word!</h2>)
         }
     }
@@ -77,11 +104,11 @@ export default function App() {
     return (
         <div className="tc">
             <h1 className="tc">The Dictionary Site</h1>
-            <SearchBar inputref={inputref} searchbarValue = {inputSearchBox} clickFunction={() => searchWord()}/>
+            <SearchBar inputref={inputref} searchbarValue = {inputSearchBox} clickFunction={() => handleClick()}/>
             {/* <Card wordinfo={wordinfo} word={word}></Card> */}
             {/* <h2>{wordinfo[0]}</h2> */}
-            <ProcessWordInfo arrayobject={wordinfo}/>
-            {/* <WordOrEntry wordinfo={wordinfo} word={header}/> */}
+            {/* <ProcessWordInfo arrayobject={wordinfo}/> */}
+            <WordOrEntry wordinfo={wordinfo}/>
         </div>
     )
 }
