@@ -1,7 +1,8 @@
-export default function determineAudio(phonetics) {
+export default function determineAudio(phonetics,word) {
     for (let i=0; i < phonetics.length;i++) {
-        if (phonetics[i].audio) {
-            return phonetics[i].audio
+        let audioUrl = phonetics[i].audio
+        if (audioUrl) {
+            return audioUrl
         }
     }
 }
