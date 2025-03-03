@@ -16,27 +16,6 @@ export default function App() {
     const [loading, setLoading] = useState(true);
     const [okResponse, setOkResponse] =useState(null);
 
-    // function ProcessWordInfo({arrayobject}) {
-    //     arrayobject.map((item) => {
-    //         // One Key Pair
-    //         let word = item.word
-
-    //         // One Key Pair
-    //         let phonetic = item.phonetic
-
-    //         // Multiple Key Pairs (Array of Objects containing values
-    //         // such as Text, Audio, sourceURL, & License. Ignore License.)
-    //         let phonetics = item.phonetics
-
-    //         // Mutliple Key Pairs. Contains array of objects with key pairs such as
-    //         // partOFSpeech, Definitions. Definitions has it's own array of objects with
-    //         // values such as definition, synonyms, and antonyms. These values can be undefined.
-    //         let meanings = item.meanings
-    //         return (
-    //             <h2>{item.word + "!!!"}</h2>
-    //         )
-    //     })
-    // }
 
     const enterKeyPressed = (event) =>  {
         if (event.key === 'Enter') {
@@ -76,7 +55,7 @@ export default function App() {
     }
 
 
-    function WordOrEntry({wordinfo}) {
+    function ProcessData({wordinfo}) {
         // console.log(counter)
         if (okResponse===true && counter>=1 && loading===false) {
             // setWord(capitalizeFirstLetter(wordinfo[0].word))
@@ -85,7 +64,8 @@ export default function App() {
             let meanings = wordinfo[0].meanings
             let sourceURLs = wordinfo[0].sourceURLs
             // let audio = determineAudio(phonetics)
-            let audio = determineAudio(phonetics)
+            let lowercaseWord = word.toLowerCase()
+            let audio = determineAudio(phonetics,lowercaseWord)
             return (
                 <div>
                     <Card word={word} phonetic={phonetic} audio={audio} meanings={meanings} sourceURLs={sourceURLs} />
@@ -99,7 +79,9 @@ export default function App() {
         }
     }
 
-
+    function DisplayData (word, phonetic, audio, meanings, soundURLs) {
+        
+    }
     return (
         <div onKeyDown={enterKeyPressed} className="tc">
             <h1 className="tc">The Dictionary Site</h1>
@@ -107,7 +89,7 @@ export default function App() {
             {/* <Card wordinfo={wordinfo} word={word}></Card> */}
             {/* <h2>{wordinfo[0]}</h2> */}
             {/* <ProcessWordInfo arrayobject={wordinfo}/> */}
-            <WordOrEntry wordinfo={wordinfo}/>
+            <ProcessData wordinfo={wordinfo}/>
         </div>
     )
 }
