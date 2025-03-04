@@ -51,9 +51,11 @@ export default function App() {
   };
 
   const handleClick = async () => {
-    setLoading(true);
-    await searchWord();
-    setLoading(false);
+    if (inputref.current.value.length > 0){
+      setLoading(true);
+      await searchWord();
+      setLoading(false);
+    }
   };
 
   return (

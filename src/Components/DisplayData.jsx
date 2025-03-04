@@ -1,6 +1,7 @@
 import React, {useMemo} from "react";
 import Card from "./Card";
 import determineAudio from "../Functionality/determineAudio";
+import DefinitionCarousel from "./DefinitionCarousel";
 
 export default function DisplayData ({wordinfo, okResponse, counter, loading, word}) { 
     const DisplayData = useMemo(() => {
