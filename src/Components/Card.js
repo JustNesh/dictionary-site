@@ -1,6 +1,8 @@
 import React from "react";
 import AudioControl from "./AudioControl";
 import DefinitionCarousel from "./DefinitionCarousel"
+import GeneralSymAnt from "./GeneralSymAnt";
+
 export default function Card({word,phonetic,audio,meanings,sourceURLs}) {
     return (
             <div>
@@ -10,6 +12,7 @@ export default function Card({word,phonetic,audio,meanings,sourceURLs}) {
                 </div>
                 <AudioControl audio={audio} />
                 <DefinitionCarousel meanings={meanings} />
+                <GeneralSymAnt meanings={meanings} />
             </div>
         )
 }
