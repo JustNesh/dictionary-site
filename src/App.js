@@ -59,10 +59,12 @@ export default function App() {
   };
 
   return (
-    <div onKeyDown={enterKeyPressed} className="tc">
+    <div onKeyDown={enterKeyPressed} className="tc main-container">
       <h1 className="tc">The Dictionary Site</h1>
-      <SearchBar inputref={inputref} searchbarValue={inputSearchBox} clickFunction={handleClick} />
-      <DisplayData wordinfo={wordinfo} okResponse={okResponse} counter={counter} loading={loading} word={word}/>
+      <div>
+        <SearchBar inputref={inputref} searchbarValue={inputSearchBox} clickFunction={handleClick} />
+        <DisplayData wordinfo={wordinfo} okResponse={okResponse} counter={counter} loading={loading} word={word}/>
+      </div>
     </div>
   );
 }
