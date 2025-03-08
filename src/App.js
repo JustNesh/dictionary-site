@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import "tachyons";
 import "./App.css";
+import FooterInfo from "./Components/Footer.jsx"
 import SearchBar from "./Components/SearchBar.js";
 import capitalizeFirstLetter from "./Functionality/capitalizeFirstLetter.js";
 import DisplayData from "./Components/DisplayData.jsx";
@@ -59,12 +60,15 @@ export default function App() {
   };
 
   return (
-    <div onKeyDown={enterKeyPressed} className="tc main-container">
-      <h1 className="tc">The Dictionary Site</h1>
-      <div>
-        <SearchBar inputref={inputref} searchbarValue={inputSearchBox} clickFunction={handleClick} />
-        <DisplayData wordinfo={wordinfo} okResponse={okResponse} counter={counter} loading={loading} word={word}/>
+    <div className="container">
+      <div onKeyDown={enterKeyPressed} className="tc main-container">
+        <h1 className="tc">English Dictionary</h1>
+        <div>
+          <SearchBar inputref={inputref} searchbarValue={inputSearchBox} clickFunction={handleClick} />
+          <DisplayData wordinfo={wordinfo} okResponse={okResponse} counter={counter} loading={loading} word={word}/>
+        </div>
       </div>
+      <FooterInfo/>
     </div>
   );
 }

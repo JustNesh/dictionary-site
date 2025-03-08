@@ -1,10 +1,16 @@
-/* . {
-    margin: 0px;
-    padding: 0px;
+/* * {
+    font-family: "Glegoo", serif;
+    font-weight: 400;
+    font-style: normal;   
 } */
+.container {
+    height: fit-content;
+}
 
-h1 {
-    background: linear-gradient(to right, black 0%,rgb(158, 158, 158) 25%,rgb(158, 158, 158) 76%,black 100%);
+
+h1{
+    /* background: linear-gradient(to right, black 0%,rgb(158, 158, 158) 25%,rgb(158, 158, 158) 76%,black 100%); */
+    background: linear-gradient(to right, rgb(17, 76, 236), rgb(0, 183, 255), rgb(16, 47, 223));
     height: 4rem;
     text-align: center;
     display: flex;
@@ -15,6 +21,10 @@ h1 {
     margin: 0px;
     padding-left: 1rem;
     border-bottom-left-radius: 1rem;
+    border-bottom: solid rgba(0,0,0,.25);
+    font-family: "Glegoo", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 input {
@@ -29,8 +39,70 @@ button {
 }
 
 .main-container {
-    height:100vh;
-    background: linear-gradient(0deg,rgb(253, 253, 151) 0%, rgb(255, 255, 85) 50% , rgb(241, 241, 95) 100% );
+    height:90vh;
+    /* background: linear-gradient(0deg,rgb(245, 120, 3) 0%, rgb(255, 255, 85) 50% , rgb(226, 85, 4) 100% ); */
+    background: linear-gradient(to right,rgb(144, 52, 231) 10%, rgb(85, 255, 255) 50% , rgb(6, 136, 223) 75%, rgb(131, 81, 223) 100% );
+}
+
+.FaGithub {
+    font-size: 2rem;
+    color: black;
+}
+
+.Justin {
+    font-size: 1rem;
+}
+
+/* .larger-footer-container {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+} */
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    justify-content: center;
+    border-top: solid black;
+    background: linear-gradient(to right, rgb(17, 76, 236), rgb(0, 183, 255), rgb(16, 47, 223));
+    align-items: center;
+    height: 10vh;
+    place-items: center;
+}
+
+.larger-body-container {
+    display: flex;
+    justify-content: center;
+}
+
+.body-container {
+    width: 80vw;
+    background-color: rgba(100, 210, 243, 0.363);
+    height: 70vh;
+    border: .25rem solid rgba(0,0,0,.25);
+    padding: .25rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#DefaultBody {
+    font-size: x-large;
+
+}
+
+#searchbar {
+    width: 70%;
+    height: 60px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #34495e;
+    outline: none;
+    font: 300 28px 'Ubuntu', sans-serif;
+    padding: 20px;
+    color: #34495e;
+    margin-bottom: 16px;
 }
 
 @media screen and (max-width: 600px) {

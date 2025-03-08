@@ -1,6 +1,7 @@
 import React, {useMemo} from "react";
 import Card from "./Card";
 import determineAudio from "../Functionality/determineAudio";
+import DefaultBody from "./DefaultBody";
 
 export default function DisplayData ({wordinfo, okResponse, counter, loading, word}) { 
     const DisplayData = useMemo(() => {
@@ -21,7 +22,7 @@ export default function DisplayData ({wordinfo, okResponse, counter, loading, wo
             return <h2>Loading...</h2>;
         } else if (okResponse === false) return <h2>Requested word is not within the dictionary!</h2>;
         else {
-            return <h2>Please input a word!</h2>;
+            return <DefaultBody />;
         }
         }
         return processData(wordinfo);
