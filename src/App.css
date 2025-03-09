@@ -38,6 +38,8 @@ button {
     cursor: pointer;
 }
 
+
+
 .main-container {
     height:90vh;
     /* background: linear-gradient(0deg,rgb(245, 120, 3) 0%, rgb(255, 255, 85) 50% , rgb(226, 85, 4) 100% ); */
@@ -47,12 +49,55 @@ button {
 .FaGithub {
     font-size: 2rem;
     color: black;
+    margin-top: .5rem;
+    margin-bottom: 0px;
 }
 
 .Justin {
     font-size: 1rem;
+    margin-top: .4rem;
 }
 
+.larger-container-carousel {
+    display: flex;
+    justify-content: center;
+}
+
+.container-carousel {
+    height: 30vh;
+    width: 80vw;
+    background-color: rgba(82, 78, 78, 0.74);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.FaArrow {
+    color: rgba(0, 0, 0, 0.75);
+    border: rgba(0, 0, 0,.25) solid .15rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: xx-large;
+}
+
+#FaArrowLeft {
+    position: absolute;
+    left: 0;
+    margin-left: .5rem;
+}
+
+#FaArrowRight {
+    position: absolute;
+    right: 0;
+    margin-right: .5rem;
+}
+
+.FaCircle {
+    position: absolute;
+    bottom: 0;    
+    margin-bottom:.5rem;
+}
 /* .larger-footer-container {
     display: flex;
     justify-content: center;
@@ -79,7 +124,7 @@ button {
 .body-container {
     width: 80vw;
     background-color: rgba(100, 210, 243, 0.363);
-    height: 70vh;
+    height: 40vh;
     border: .25rem solid rgba(0,0,0,.25);
     padding: .25rem;
     padding-left: 4rem;
@@ -105,9 +150,18 @@ button {
     margin-bottom: 16px;
 }
 
-@media screen and (max-width: 600px) {
+.CardLook {
+    height: 75%;
+    width: 25%;
+    margin: 1rem;
+    border: black solid 1px;
+    border-radius: .5rem .5rem;
+    background-color: #34495e;
+}
+
+/* @media screen and (max-width: 600px) {
     h1 {
         background: linear-gradient(to right, black 0%,rgb(158, 158, 158) 25%,rgb(158, 158, 158) 76%,black 100%);
         justify-content: center;
     }
-}
+} */

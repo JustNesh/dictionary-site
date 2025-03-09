@@ -2,6 +2,7 @@ import React, {useMemo} from "react";
 import Card from "./Card";
 import determineAudio from "../Functionality/determineAudio";
 import DefaultBody from "./DefaultBody";
+import Carousel from "./Carousel.jsx";
 
 export default function DisplayData ({wordinfo, okResponse, counter, loading, word}) { 
     const DisplayData = useMemo(() => {
@@ -22,7 +23,12 @@ export default function DisplayData ({wordinfo, okResponse, counter, loading, wo
             return <h2>Loading...</h2>;
         } else if (okResponse === false) return <h2>Requested word is not within the dictionary!</h2>;
         else {
-            return <DefaultBody />;
+            return (
+            <div>
+                <DefaultBody />
+                <Carousel />
+            </div>
+            )
         }
         }
         return processData(wordinfo);

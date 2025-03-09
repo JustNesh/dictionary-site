@@ -1,5 +1,5 @@
 import React from "react";
-// import Carousel from "./Carousel,jsx";
+
 
 export default function DefinitionCarousel({meanings}) {
         const definitions = meanings[0]

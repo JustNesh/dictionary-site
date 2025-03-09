@@ -2,7 +2,7 @@ import React from "react";
 import AudioControl from "./AudioControl";
 import DefinitionCarousel from "./DefinitionCarousel"
 import GeneralSymAnt from "./GeneralSymAnt";
-import { MdOutlinePlayArrow } from "react-icons/md";
+// import { MdOutlinePlayArrow } from "react-icons/md";
 
 export default function Card({word,phonetic,audio,meanings,sourceURLs}) {
     return (
