@@ -2,9 +2,9 @@ import React, {useMemo} from "react";
 import Card from "./Card";
 import determineAudio from "../Functionality/determineAudio";
 import DefaultBody from "./DefaultBody";
-import Carousel from "./Carousel.jsx";
 
-export default function DisplayData ({wordinfo, okResponse, counter, loading, word}) { 
+export default function DisplayData ({wordinfo, okResponse, counter, loading, word, activeObject}) { 
+
     const DisplayData = useMemo(() => {
         function processData(wordinfo) {
         if (okResponse === true && counter >= 1 && loading === false) {
@@ -16,7 +16,7 @@ export default function DisplayData ({wordinfo, okResponse, counter, loading, wo
             let audio = determineAudio(phonetics, lowercaseWord);
             return (
             <div>
-                <Card word={word} phonetic={phonetic} audio={audio} meanings={meanings} sourceURLs={sourceURLs} />
+                <Card word={word} phonetic={phonetic} audio={audio} meanings={meanings} sourceURLs={sourceURLs} activeObject={activeObject} />
             </div>
             );
         } else if (counter >= 1 && loading === true) {
@@ -26,11 +26,10 @@ export default function DisplayData ({wordinfo, okResponse, counter, loading, wo
             return (
             <div>
                 <DefaultBody />
-                <Carousel />
             </div>
             )
         }
         }
         return processData(wordinfo);
-    }, [wordinfo, okResponse, counter, loading, word]);
+    }, [wordinfo, okResponse, counter, loading, word, activeObject]);
 return DisplayData}

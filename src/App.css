@@ -66,7 +66,7 @@ button {
 .container-carousel {
     height: 30vh;
     width: 80vw;
-    background-color: rgba(82, 78, 78, 0.74);
+    background-color: rgba(128, 83, 212, 0.384);
     position: relative;
     display: flex;
     align-items: center;
@@ -79,6 +79,11 @@ button {
     border-radius: 50%;
     cursor: pointer;
     font-size: xx-large;
+    transition: all .4s ease-in;
+}
+
+.FaArrow:hover {
+    transform: scale(1.25);
 }
 
 #FaArrowLeft {
@@ -93,10 +98,26 @@ button {
     margin-right: .5rem;
 }
 
-.FaCircle {
+.indicators {
+    display: flex;
     position: absolute;
     bottom: 0;    
     margin-bottom:.5rem;
+}
+
+.indicator {
+    margin: .25rem;
+    cursor: pointer;
+    font-size: x-small;
+    
+}
+
+.indicator-active {
+    color: azure;
+}
+
+.indicator-inactive {
+    color: rgba(0, 0, 0, 0.384);
 }
 /* .larger-footer-container {
     display: flex;
@@ -124,7 +145,7 @@ button {
 .body-container {
     width: 80vw;
     background-color: rgba(100, 210, 243, 0.363);
-    height: 40vh;
+    height: 70vh;
     border: .25rem solid rgba(0,0,0,.25);
     padding: .25rem;
     padding-left: 4rem;
@@ -134,7 +155,10 @@ button {
 
 #DefaultBody {
     font-size: x-large;
+}
 
+#InnerDefaultBody {
+    height: 25vh;
 }
 
 #searchbar {
@@ -156,7 +180,12 @@ button {
     margin: 1rem;
     border: black solid 1px;
     border-radius: .5rem .5rem;
-    background-color: #34495e;
+    background-color: rgba(100, 210, 243, 0.363);
+    box-shadow: 0px 0px .25rem;
+}
+
+.CardLook-Hidden {
+    display: none;
 }
 
 /* @media screen and (max-width: 600px) {

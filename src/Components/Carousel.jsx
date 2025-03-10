@@ -2,26 +2,40 @@ import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { FaCircle } from "react-icons/fa";
+import CardLook from "./CardLook";
 
-export default function Carousel() {
+export default function Carousel({definitions,activeObject}) {
+//  const [active, setActive] = useState(0)
+
+//     const handleLeftClick = async() => {
+//         const currentActive = active
+//         setActive((currentActive - 1))
+//         console.log(active)
+//     }
+
+//     const handleRightClick = async() => {
+//         setActive(active + 1)
+//         console.log(active)
+//     }
+
+//     const activeObject = {
+//         "active":active, 
+//         "handleLeftClick":handleLeftClick, 
+//         "handleRightClick":handleRightClick
+//     }
+
+    // useEffect(()=>{console.log(activeObject.active)},[activeObject.active])
     return (
         <div className="larger-container-carousel">
             <div className="container-carousel">
-                <FaArrowLeft className="FaArrow" id="FaArrowLeft" />
-                <div className="CardLook">
-                    <h4>Definition 1</h4>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates odio harum corporis omnis dolores natus temporibus, ducimus et a minima!</p>
+                <FaArrowLeft className="FaArrow" id="FaArrowLeft" onClick={activeObject.handleLeftClick}/>
+                <CardLook activeObject={activeObject} definitions={definitions}/ >
+                <FaArrowRight className="FaArrow" id="FaArrowRight" onClick={activeObject.handleRightClick}/>
+                <div className="indicators">
+                    {definitions.definitions.map((_,idx)=>{
+                        return <FaCircle className={activeObject.active === idx? "indicator indicator-active":"indicator indicator-inactive"} key={idx} onClick={() =>{activeObject.setActive(idx)}}/>
+                    })}
                 </div>
-                <div className="CardLook">
-                    <h4>Definition 1</h4>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt earum, laborum quod ab veniam error neque recusandae sunt dolore fugiat.</p>
-                </div>                
-                <div className="CardLook">
-                    <h4>Definition 1</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo blanditiis reiciendis quaerat illo totam tenetur sed hic tempora quos corporis?</p>
-                </div>
-                <FaCircle className="FaCircle" />
-                <FaArrowRight className="FaArrow" id="FaArrowRight" />
             </div>
         </div>
     )

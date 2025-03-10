@@ -14,6 +14,7 @@ export default function App() {
   const inputref = useRef(word);
   const [loading, setLoading] = useState(true);
   const [okResponse, setOkResponse] = useState(null);
+  const [active,setActive] = useState(0);
 
   const enterKeyPressed = (event) => {
     if (event.key === "Enter") {
@@ -51,6 +52,23 @@ export default function App() {
     }
   };
 
+  const handleLeftClick= async() => {
+    const currentActive = active
+    setActive((currentActive - 1))
+  }
+
+  const handleRightClick= async() =>{
+    setActive(active + 1)
+  }
+
+  const activeObject = {
+    "active":active, 
+    "handleLeftClick":handleLeftClick, 
+    "handleRightClick":handleRightClick,
+    "setActive":setActive
+  }
+
+
   const handleClick = async () => {
     if (inputref.current.value.length > 0){
       setLoading(true);
@@ -65,7 +83,7 @@ export default function App() {
         <h1 className="tc">English Dictionary</h1>
         <div>
           <SearchBar inputref={inputref} searchbarValue={inputSearchBox} clickFunction={handleClick} />
-          <DisplayData wordinfo={wordinfo} okResponse={okResponse} counter={counter} loading={loading} word={word}/>
+          <DisplayData wordinfo={wordinfo} okResponse={okResponse} counter={counter} loading={loading} word={word} activeObject={activeObject} />
         </div>
       </div>
       <FooterInfo/>

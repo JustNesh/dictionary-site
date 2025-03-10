@@ -4,7 +4,7 @@ import DefinitionCarousel from "./DefinitionCarousel"
 import GeneralSymAnt from "./GeneralSymAnt";
 // import { MdOutlinePlayArrow } from "react-icons/md";
 
-export default function Card({word,phonetic,audio,meanings,sourceURLs}) {
+export default function Card({word,phonetic,audio,meanings,sourceURLs,activeObject}) {
     return (
             <div className="larger-body-container">
                 <div className="body-container">
@@ -18,7 +18,7 @@ export default function Card({word,phonetic,audio,meanings,sourceURLs}) {
                         <h3>{phonetic}</h3>
                     </div>
                     <AudioControl audio={audio} />
-                    <DefinitionCarousel meanings={meanings} />
+                    <DefinitionCarousel meanings={meanings} activeObject={activeObject}/>
                     <GeneralSymAnt meanings={meanings} />
                 </div>
             </div>
