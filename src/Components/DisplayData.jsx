@@ -3,7 +3,8 @@ import Card from "./Card";
 import determineAudio from "../Functionality/determineAudio";
 import DefaultBody from "./DefaultBody";
 
-export default function DisplayData ({wordinfo, okResponse, counter, loading, word}) { 
+export default function DisplayData ({wordinfo, okResponse, counter, loading, word, activeObject}) { 
+
     const DisplayData = useMemo(() => {
         function processData(wordinfo) {
         if (okResponse === true && counter >= 1 && loading === false) {
@@ -15,16 +16,20 @@ export default function DisplayData ({wordinfo, okResponse, counter, loading, wo
             let audio = determineAudio(phonetics, lowercaseWord);
             return (
             <div>
-                <Card word={word} phonetic={phonetic} audio={audio} meanings={meanings} sourceURLs={sourceURLs} />
+                <Card word={word} phonetic={phonetic} audio={audio} meanings={meanings} sourceURLs={sourceURLs} activeObject={activeObject} />
             </div>
             );
         } else if (counter >= 1 && loading === true) {
             return <h2>Loading...</h2>;
         } else if (okResponse === false) return <h2>Requested word is not within the dictionary!</h2>;
         else {
-            return <DefaultBody />;
+            return (
+            <div>
+                <DefaultBody />
+            </div>
+            )
         }
         }
         return processData(wordinfo);
-    }, [wordinfo, okResponse, counter, loading, word]);
+    }, [wordinfo, okResponse, counter, loading, word, activeObject]);
 return DisplayData}

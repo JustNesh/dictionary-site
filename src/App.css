@@ -38,6 +38,8 @@ button {
     cursor: pointer;
 }
 
+
+
 .main-container {
     height:90vh;
     /* background: linear-gradient(0deg,rgb(245, 120, 3) 0%, rgb(255, 255, 85) 50% , rgb(226, 85, 4) 100% ); */
@@ -47,12 +49,76 @@ button {
 .FaGithub {
     font-size: 2rem;
     color: black;
+    margin-top: .5rem;
+    margin-bottom: 0px;
 }
 
 .Justin {
     font-size: 1rem;
+    margin-top: .4rem;
 }
 
+.larger-container-carousel {
+    display: flex;
+    justify-content: center;
+}
+
+.container-carousel {
+    height: 30vh;
+    width: 80vw;
+    background-color: rgba(128, 83, 212, 0.384);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.FaArrow {
+    color: rgba(0, 0, 0, 0.75);
+    border: rgba(0, 0, 0,.25) solid .15rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: xx-large;
+    transition: all .4s ease-in;
+}
+
+.FaArrow:hover {
+    transform: scale(1.25);
+}
+
+#FaArrowLeft {
+    position: absolute;
+    left: 0;
+    margin-left: .5rem;
+}
+
+#FaArrowRight {
+    position: absolute;
+    right: 0;
+    margin-right: .5rem;
+}
+
+.indicators {
+    display: flex;
+    position: absolute;
+    bottom: 0;    
+    margin-bottom:.5rem;
+}
+
+.indicator {
+    margin: .25rem;
+    cursor: pointer;
+    font-size: x-small;
+    
+}
+
+.indicator-active {
+    color: azure;
+}
+
+.indicator-inactive {
+    color: rgba(0, 0, 0, 0.384);
+}
 /* .larger-footer-container {
     display: flex;
     justify-content: center;
@@ -89,7 +155,10 @@ button {
 
 #DefaultBody {
     font-size: x-large;
+}
 
+#InnerDefaultBody {
+    height: 25vh;
 }
 
 #searchbar {
@@ -105,9 +174,23 @@ button {
     margin-bottom: 16px;
 }
 
-@media screen and (max-width: 600px) {
+.CardLook {
+    height: 75%;
+    width: 25%;
+    margin: 1rem;
+    border: black solid 1px;
+    border-radius: .5rem .5rem;
+    background-color: rgba(100, 210, 243, 0.363);
+    box-shadow: 0px 0px .25rem;
+}
+
+.CardLook-Hidden {
+    display: none;
+}
+
+/* @media screen and (max-width: 600px) {
     h1 {
         background: linear-gradient(to right, black 0%,rgb(158, 158, 158) 25%,rgb(158, 158, 158) 76%,black 100%);
         justify-content: center;
     }
-}
+} */
